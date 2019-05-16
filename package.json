@@ -1,0 +1,19 @@
+{
+  "name": "webapibackend",
+  "version": "1.0.0",
+  "description": "Name: Beebhav Sapkota",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stw304cem/t2-backend-api-bibhav777.git"
+  },
+  "author": "Beebhav Sapkota",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stw304cem/t2-backend-api-bibhav777/issues"
+  },
+  "homepage": "https://github.com/stw304cem/t2-backend-api-bibhav777#readme"
+}
