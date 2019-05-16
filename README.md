@@ -1,5 +1,5 @@
 # Your Project Title Here
-Name: Your Full Name
+Name: Beebhav Sapkota
 
 CollegeID: Your College ID
 
