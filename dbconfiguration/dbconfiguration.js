@@ -1,5 +1,5 @@
 var Sequelize= require('sequelize');
-var sequelize= new Sequelize('practicedb','root','Degea1234!',{
+var sequelize= new Sequelize('spmanagement','root','Degea1234!',{
  host: 'localhost',
  dialect: 'mysql',
  logging: false
@@ -16,3 +16,8 @@ console.log('db connected sucessfully');
 .catch(function(err){
 	console.log(err);
 });
+
+
+module.exports{
+	Sequelize, sequelize
+}
