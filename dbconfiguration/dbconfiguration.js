@@ -18,6 +18,6 @@ console.log('db connected sucessfully');
 });
 
 
-module.exports{
+module.exports={
 	Sequelize, sequelize
 }
