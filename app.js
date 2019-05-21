@@ -15,11 +15,20 @@ next();
 
 
 myapp.use(bodyParser.json());
-myapp.post('/v1/registration',controller.registerUser, function(req,res,next){
+myapp.post('/v1/registration',controller.hashGenerator,controller.registerUser, function(req,res,next){
+ res.status(201);
+ res.send({"message":"Registered"})
 
-next();
 });
 
+
+myapp.use(function(err,req,res,next){
+
+res.status(err.status);
+res.send({"message":err.message});
+
+
+})
 
 
 
