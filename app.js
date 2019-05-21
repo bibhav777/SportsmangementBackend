@@ -15,7 +15,7 @@ next();
 
 
 myapp.use(bodyParser.json());
-myapp.post('/v1/registration',controller.hashGenerator,controller.registerUser, function(req,res,next){
+myapp.post('/v1/registration',controller.validator,controller.hashGenerator,controller.registerUser, function(req,res,next){
  res.status(201);
  res.send({"message":"Registered"})
 

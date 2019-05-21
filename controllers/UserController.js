@@ -4,6 +4,26 @@ var saltrounds=10;
 
 
 
+function validator(req,res,next){
+usermodel.User.findOne({
+  where: {username:req.body.username}
+
+})
+.then(function(result){
+	next("status":409, "message":"User already exists");
+
+})
+.catch(function(err){
+ 
+
+
+})
+
+
+
+}
+
+
 function hashGenerator(req,res,next){
 req.body.password //PLain text password from the frontend
 bcrypt.hash(req.body.password, saltrounds)
