@@ -10,7 +10,7 @@ usermodel.User.findOne({
 
 })
 .then(function(result){
-	next("status":409, "message":"User already exists");
+	next({"status":409, "message":"User already exists"});
 
 })
 .catch(function(err){
@@ -56,5 +56,5 @@ next();
 }
 
 module.exports={
-	registerUser,hashGenerator
+	registerUser,hashGenerator,validator
 }
