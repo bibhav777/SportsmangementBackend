@@ -6,18 +6,22 @@ var saltrounds=10;
 
 function validator(req,res,next){
 usermodel.User.findOne({
-  where: {username:req.body.username}
+  where:{username: req.body.username}
 
 })
 .then(function(result){
-	next({"status":409, "message":"User already exists"});
+
+  console.log(result.dataValues);
+  if(result.dataValues !=''){
+  next({"status":409, "message":"User already exists"});
+    
+  }
+
 
 })
 .catch(function(err){
- 
-
-
-})
+  next();
+ })
 
 
 
