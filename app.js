@@ -1,6 +1,7 @@
 var express= require('express');
 var myapp=express();
 var controller= require('./controllers/UserController.js');
+var authController=require('./controllers/AuthController.js');
 var bodyParser= require('body-parser');
 
 myapp.use(function(req,res,next){
@@ -21,10 +22,16 @@ myapp.post('/v1/registration',controller.validator,controller.hashGenerator,cont
 
 });
 
-myapp.post('/v1/login',function(req,res,next){
 
 
+myapp.post('/v1/auth',authController.validator,authController.pwdcheck,function(req,res,next){
+
+ 
 });
+
+
+
+
 
 myapp.use(function(err,req,res,next){
 

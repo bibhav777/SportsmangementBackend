@@ -27,7 +27,6 @@ usermodel.User.findOne({
 
 }
 
-
 function hashGenerator(req,res,next){
 req.body.password //PLain text password from the frontend
 bcrypt.hash(req.body.password, saltrounds)
