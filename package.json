@@ -4,7 +4,7 @@
   "description": "Name: Beebhav Sapkota",
   "main": "app.js",
   "scripts": {
-    "development":"nodemon app.js",
+    "development": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.0",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^1.6.5",
     "sequelize": "^5.8.6"
   }
