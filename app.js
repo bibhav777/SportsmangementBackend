@@ -22,11 +22,11 @@ myapp.post('/v1/registration',controller.validator,controller.hashGenerator,cont
 
 });
 
+myapp.post('/v1/login',authController.validator,authController.pwdcheck,authController.jwtToken,function(req,res,next){
+res.status(200);
+res.send({"token":req.Token});
 
 
-myapp.post('/v1/auth',authController.validator,authController.pwdcheck,authController.jwtToken,function(req,res,next){
- res.status(200);
- res.send({"message":"User was successfully logged in"});
  
 });
 
@@ -35,11 +35,8 @@ myapp.post('/v1/auth',authController.validator,authController.pwdcheck,authContr
 
 
 myapp.use(function(err,req,res,next){
-
 res.status(err.status);
 res.send({"message":err.message});
-
-
 })
 
 myapp.listen(3001);
