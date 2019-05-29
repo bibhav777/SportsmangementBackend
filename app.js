@@ -6,7 +6,7 @@ var bodyParser= require('body-parser');
 
 myapp.use(function(req,res,next){
 res.setHeader('Access-Control-Allow-Origin','*');
-res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+res.setHeader('Access-Control-Allow-Headers', 'Content-Type,authorization');
 res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
 
 next();
@@ -22,12 +22,19 @@ myapp.post('/v1/registration',controller.validator,controller.hashGenerator,cont
 
 });
 
-myapp.post('/v1/login',authController.validator,authController.pwdcheck,authController.jwtToken,function(req,res,next){
+myapp.post('/v1/login',authController.validator,authController.pwdcheck,authController.jwtToken,function(req,res,next			){
 res.status(200);
 res.send({"token":req.Token});
 
 
+
  
+});
+
+myapp.get('/v1/adminDashboard',authController.verifyToken,function(req,res){
+
+ res.redirect('/v1/adminDashboard');
+
 });
 
 

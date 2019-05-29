@@ -58,6 +58,22 @@ jwt.sign({username:req.body.username},'secretkey',{expiresIn:"10hr"},
 }
 
 
+function verifyToken(req,res,next){
+  let token=req.headers.authorization.slice(6,req.headers.authorization.lenght);
+  jwt.verify(token,'secretkey',function(err, decode){
+    if(err !=null){
+    next({status:500,message:err.message})
+    console.log(err);
+
+  }else{
+    next();
+  }
+
+
+  } )
+
+}
+
 module.exports={
-	validator,pwdcheck,jwtToken
+	validator,pwdcheck,jwtToken,verifyToken
 }
