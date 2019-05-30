@@ -15,7 +15,7 @@ function validator(req,res,next){
 })
 
    .catch(function(err){
-   	next({"status": 400, "message":"Sorry! Please register first"});
+   	next({"status": 400, "message":"Sorry! Username or password didnt matched"});
 })
 
 }

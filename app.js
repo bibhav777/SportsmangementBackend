@@ -33,7 +33,7 @@ res.send({"token":req.Token});
 
 myapp.get('/v1/adminDashboard',authController.verifyToken,function(req,res){
 
- res.redirect('/v1/adminDashboard');
+
 
 });
 
