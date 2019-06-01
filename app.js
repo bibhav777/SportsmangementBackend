@@ -2,8 +2,9 @@ var express= require('express');
 var myapp=express();
 var controller= require('./controllers/UserController.js');
 var authController=require('./controllers/AuthController.js');
-var model=require('./model/players.js');
+var player=require('./controllers/PlayersController.js');
 var bodyParser= require('body-parser');
+
 
 myapp.use(function(req,res,next){
 res.setHeader('Access-Control-Allow-Origin','*');
@@ -15,8 +16,8 @@ next();
 
 })
 
-
 myapp.use(bodyParser.json());
+
 myapp.post('/v1/registration',controller.validator,controller.hashGenerator,controller.registerUser, function(req,res,next){
  res.status(201);
  res.send({"message":"User was successfully registered"});
@@ -39,7 +40,12 @@ myapp.get('/v1/adminDashboard',authController.verifyToken,function(req,res){
 
 });
 
+myapp.post('/addplayers',player.uploads.single('image'),player.addPlayer,function(req,res,next){
+res.status(201);
+res.send({"message":"Player is successfully added"});
 
+
+});
 
 
 

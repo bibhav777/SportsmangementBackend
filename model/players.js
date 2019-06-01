@@ -11,6 +11,13 @@ primaryKey:true
 
 },
 
+image: {
+    type: db.Sequelize.BLOB,
+    allowNull:false
+
+
+},
+
 fullname: {
 
 	type: db.Sequelize.STRING,
@@ -53,15 +60,10 @@ registersince: {
 position: {
     type: db.Sequelize.STRING,
     allowNull:false
-},
-
-
-image: {
-    type: db.Sequelize.BLOB,
-    allowNull:false
-
-
 }
+
+
+
 },
 
 
