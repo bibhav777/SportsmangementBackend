@@ -2,6 +2,7 @@ var express= require('express');
 var myapp=express();
 var controller= require('./controllers/UserController.js');
 var authController=require('./controllers/AuthController.js');
+var model=require('./model/players.js');
 var bodyParser= require('body-parser');
 
 myapp.use(function(req,res,next){
@@ -25,6 +26,7 @@ myapp.post('/v1/registration',controller.validator,controller.hashGenerator,cont
 myapp.post('/v1/login',authController.validator,authController.pwdcheck,authController.jwtToken,function(req,res,next			){
 res.status(200);
 res.send({"token":req.Token});
+ 
 
 
 
