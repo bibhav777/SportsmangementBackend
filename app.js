@@ -1,9 +1,24 @@
 var express= require('express');
 var myapp=express();
+var multer= require('multer');
 var controller= require('./controllers/UserController.js');
 var authController=require('./controllers/AuthController.js');
 var player=require('./controllers/PlayersController.js');
 var bodyParser= require('body-parser');
+var path= require('path');
+
+var appstorage= multer.diskStorage({
+destination: function(req,file,cb){
+cb(null, 'uploads')
+},
+
+filename: (req, file, cb) => {
+          cb(null,file.originalname + '-' + Date.now() +
+               path.extname(file.originalname)); 
+     }
+});
+
+var uploads= multer({storage: appstorage});
 
 
 myapp.use(function(req,res,next){
@@ -40,7 +55,7 @@ myapp.get('/v1/adminDashboard',authController.verifyToken,function(req,res){
 
 });
 
-myapp.post('/addplayers',player.uploads.single('image'),player.addPlayer,function(req,res,next){
+myapp.post('/addplayers',uploads.single('image'),player.addPlayer,function(req,res,next){
 res.status(201);
 res.send({"message":"Player is successfully added"});
 
