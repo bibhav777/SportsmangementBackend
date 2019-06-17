@@ -62,6 +62,12 @@ res.send({"message":"Player is successfully added"});
 
 });
 
+myapp.get('/viewplayers',player.viewplayers,function(req,res,next){
+res.status(201);
+
+
+});
+
 
 
 myapp.use(function(err,req,res,next){
