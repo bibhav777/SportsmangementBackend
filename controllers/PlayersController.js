@@ -35,9 +35,7 @@ next({"status":500, "message": "Failed to add players"});
 
 
 function viewplayers(req,res,next){
-   player.Players.findAll({
-     attributes:['id','fullname','dob','address','sportsinvolved','height','registersince','position']
-   })
+   player.Players.findAll()
    .then(function(result){
     res.json(result);
 

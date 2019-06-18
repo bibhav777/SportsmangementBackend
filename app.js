@@ -3,7 +3,9 @@ var myapp=express();
 var multer= require('multer');
 var controller= require('./controllers/UserController.js');
 var authController=require('./controllers/AuthController.js');
+
 var player=require('./controllers/PlayersController.js');
+var matches= require('./controllers/MatchesController.js');
 var bodyParser= require('body-parser');
 var path= require('path');
 
@@ -68,6 +70,13 @@ res.status(201);
 
 });
 
+
+myapp.post('/addmatches',matches.addMatches,function(req,res,next){
+res.status(201);
+res.send({"message":"Match is added successfuully"})
+
+
+});
 
 
 myapp.use(function(err,req,res,next){
