@@ -6,8 +6,13 @@ var authController=require('./controllers/AuthController.js');
 
 var player=require('./controllers/PlayersController.js');
 var matches= require('./controllers/MatchesController.js');
+var matchmodel=require('./model/matches.js')
 var bodyParser= require('body-parser');
 var path= require('path');
+var publicDir=require('path').join(__filename,'/uploads');
+myapp.use(express.static(publicDir));	
+myapp.use(express.static('public'));
+myapp.use('/uploads',express.static(__dirname +'/uploads'));
 
 var appstorage= multer.diskStorage({
 destination: function(req,file,cb){
@@ -69,11 +74,43 @@ res.status(201);
 
 
 });
+myapp.get('/uploads',function(req,res,next){
+res.send(publicDir);
+console.log('asdasd');
+
+})
 
 
 myapp.post('/addmatches',matches.addMatches,function(req,res,next){
 res.status(201);
 res.send({"message":"Match is added successfuully"})
+
+
+});
+myapp.get('/viewmatches',matches.viewmatches,function(req,res,next){
+res.status(201);
+
+
+});
+
+myapp.delete('/viewmatches/:uid',function(req,res){
+console.log(req.params.uid);
+matchmodel.Matches.destroy({
+       where:{id :req.params.uid}
+
+
+
+}).then(function(){
+
+res.status(200)
+res.send({"message":"DELETED SUCCESSFULLY"})
+
+}).catch(function(err){
+next();
+
+
+
+})
 
 
 });

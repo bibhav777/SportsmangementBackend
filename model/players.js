@@ -12,7 +12,7 @@ primaryKey:true
 },
 
 image: {
-    type: db.Sequelize.BLOB,
+    type: db.Sequelize.STRING,
     allowNull:false
 
 

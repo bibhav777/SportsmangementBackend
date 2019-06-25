@@ -28,6 +28,21 @@ next({"status":500, "message": "Failed to add matchesss"});
 
 };
 
+
+function viewmatches(req,res,next){
+ matches.Matches.findAll()
+ .then(function(result){
+  res.json(result);
+
+
+
+ }).catch(function(err){
+
+ 	next();
+ });
+
+}
+
 module.exports={
-	addMatches
+	addMatches,viewmatches
 }
