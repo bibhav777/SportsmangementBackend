@@ -25,7 +25,7 @@ fullname: {
 },
 
 dob: {
-    type: db.Sequelize.DATE,
+    type: db.Sequelize.DATEONLY,
     allowNull: false
 
 
@@ -51,7 +51,7 @@ height: {
 },
 
 registersince: {
-    type: db.Sequelize.DATE,
+    type: db.Sequelize.DATEONLY,
     allowNull:false
 
 

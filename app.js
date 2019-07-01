@@ -48,7 +48,12 @@ myapp.post('/v1/registration',controller.validator,controller.hashGenerator,cont
 
 myapp.post('/v1/login',authController.validator,authController.pwdcheck,authController.jwtToken,function(req,res,next			){
 res.status(200);
-res.send({"token":req.Token});
+res.send(
+	{
+		"token":req.Token,
+		"message":"LOGIN SUCCESSFUL"
+}
+	);
  
 
 
@@ -74,6 +79,18 @@ res.status(201);
 
 
 });
+
+
+myapp.get('/players/:uid',player.getplayer,function(req,res,next){
+
+
+
+});
+myapp.put('/updateplayers/:uid',player.updateplayer,function(req,res){
+console.log(req.params.uid);
+
+
+});
 myapp.get('/uploads',function(req,res,next){
 res.send(publicDir);
 console.log('asdasd');
@@ -93,24 +110,27 @@ res.status(201);
 
 });
 
-myapp.delete('/viewmatches/:uid',function(req,res){
+myapp.delete('/deletematches/:uid',matches.deletematches,function(req,res){
 console.log(req.params.uid);
-matchmodel.Matches.destroy({
-       where:{id :req.params.uid}
+
+
+});
+
+
+myapp.get('/matches/:uid',matches.getmatches,function(req,res,next){
 
 
 
-}).then(function(){
-
-res.status(200)
-res.send({"message":"DELETED SUCCESSFULLY"})
-
-}).catch(function(err){
-next();
+});
+myapp.put('/updatematches/:uid',matches.updatematches,function(req,res){
+console.log(req.params.uid);
 
 
+});
 
-})
+
+myapp.delete('/deleteplayers/:uid',player.deleteplayers,function(req,res){
+console.log(req.params.uid);
 
 
 });

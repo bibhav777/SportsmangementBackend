@@ -43,6 +43,83 @@ function viewmatches(req,res,next){
 
 }
 
+function deletematches(req,res,next){
+matches.Matches.destroy({
+       where:{id :req.params.uid}
+
+
+
+}).then(function(){
+
+res.status(200)
+res.send({"message":"DELETED SUCCESSFULLY"})
+
+}).catch(function(err){
+next();
+
+
+
+})
+
+
+
+}
+
+
+function getmatches(req,res,next){
+matches.Matches.findOne({
+where:{id:req.params.uid}
+
+}).then(function(result){
+   //console.log(result)
+   res.status(200)
+
+   res.json(result);
+
+}).catch(function(){
+next();
+
+})
+
+
+
+}
+
+function updatematches(req,res,next){
+matches.Matches.update({
+
+    firstteam: req.body.firstteam,
+     secondteam:req.body.secondteam,
+     sportstype:req.body.sportstype,
+     date:req.body.date,
+     time:req.body.time
+},{
+  where:{
+  id : req.params.uid
+}
+
+
+})
+
+
+.then(function(result,status){
+// res.send("Matches updated successfully")
+// res.status(201);
+// next()
+next({status:200,"message":"updated"});
+
+
+}).catch(function(err){
+  next();
+
+
+
+}) 
+
+
+}
+
+
 module.exports={
-	addMatches,viewmatches
+	addMatches,viewmatches,deletematches,getmatches,updatematches
 }
