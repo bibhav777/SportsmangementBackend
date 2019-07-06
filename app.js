@@ -1,6 +1,38 @@
 var express= require('express');
 var myapp=express();
 var multer= require('multer');
+const swaggerJsdoc= require('swagger-jsdoc');
+const swaggerUi= require('swagger-ui-express');
+ 
+ var swaggerDefinition={
+ info: {
+    // API informations (required)
+    title: 'Sports Management', // Title (required)
+    version: 'v1', // Version (required)
+    description: 'API Documentation', // Description (optional)
+  },
+  host:'localhost:3001', // Host (optional)
+  basePath: '/', // Base path (optional)
+  securityDefinition:{
+  	bearerAuth:{
+  		type:'apiKey',
+  		name:'authorization',
+  		scheme:'bearer',
+  		in:'header'
+  	}
+  }
+}
+
+var options={
+
+	swaggerDefinition, 
+  apis: ['./app.js']
+
+}
+
+const swaggerSpec=swaggerJsdoc(options);
+myapp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 var controller= require('./controllers/UserController.js');
 var authController=require('./controllers/AuthController.js');
 
