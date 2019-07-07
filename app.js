@@ -71,6 +71,31 @@ next();
 })
 
 myapp.use(bodyParser.json());
+/**
+* @swagger
+* /v1/registration:
+*  post:
+*   tags:
+*    - Registration
+*   name: Registration
+*   produces: application/json
+*   parameters: 
+*   - name: user
+*     in: body
+*     schema:
+*       type: object
+*       properties: 
+*        username:
+*         type: string
+*        email:
+*         type: string
+*        password:
+*         type: string
+*   responses:
+*     201:
+*       description: sucessfull  
+*/
+
 
 myapp.post('/v1/registration',controller.validator,controller.hashGenerator,controller.registerUser, function(req,res,next){
  res.status(201);

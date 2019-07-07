@@ -13,7 +13,7 @@ primaryKey:true
 
 image: {
     type: db.Sequelize.STRING,
-    allowNull:false
+    allowNull:true
 
 
 },
