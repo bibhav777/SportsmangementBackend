@@ -102,7 +102,28 @@ myapp.post('/v1/registration',controller.validator,controller.hashGenerator,cont
  res.send({"message":"User was successfully registered"});
 
 });
-
+/**
+* @swagger
+* /v1/login:
+*  post:
+*   tags:
+*    - Login
+*   name: Login
+*   produces: application/json
+*   parameters: 
+*   - name: user
+*     in: body
+*     schema:
+*       type: object
+*       properties: 
+*        username:
+*         type: string
+*        password:
+*         type: string
+*   responses:
+*     200:
+*       description: sucessfull  
+*/
 myapp.post('/v1/login',authController.validator,authController.pwdcheck,authController.jwtToken,function(req,res,next			){
 res.status(200);
 res.send(
@@ -123,6 +144,40 @@ myapp.get('/v1/adminDashboard',authController.verifyToken,function(req,res){
 
 
 });
+/**
+* @swagger
+* /addplayers:
+*  post:
+*   tags:
+*    - Addplayers
+*   name: AddPlayers
+*   produces: application/json
+*   parameters: 
+*   - name: addplayer
+*     in: body
+*     schema:
+*       type: object
+*       properties: 
+*        image:
+*         type: string
+*        fullname:
+*         type: string
+*        dob:
+*         type: date
+*        address:
+*         type: string 
+*        sportsinvolved:
+*         type: string 
+*        height:
+*         type: string 
+*        registersince:
+*         type: string
+*        position: 
+*         type: string
+*   responses:
+*     201:
+*       description: sucessfull  
+*/
 
 myapp.post('/addplayers',uploads.single('image'),player.addPlayer,function(req,res,next){
 res.status(201);
@@ -140,7 +195,40 @@ res.status(201);
 
 myapp.get('/players/:uid',player.getplayer,function(req,res,next){
 
-
+/**
+* @swagger
+* /updateplayers/:uid:
+*  put:
+*   tags:
+*    - Updateplayers
+*   name: UpdatePlayers
+*   produces: application/json
+*   parameters: 
+*   - name: updateplayers
+*     in: body
+*     schema:
+*       type: object
+*       properties: 
+*        image:
+*         type: string
+*        fullname:
+*         type: string
+*        dob:
+*         type: date
+*        address:
+*         type: string 
+*        sportsinvolved:
+*         type: string 
+*        height:
+*         type: string 
+*        registersince:
+*         type: string
+*        position: 
+*         type: string
+*   responses:
+*     201:
+*       description: sucessfull  
+*/
 
 });
 myapp.put('/updateplayers/:uid',player.updateplayer,function(req,res){
@@ -153,7 +241,34 @@ res.send(publicDir);
 console.log('asdasd');
 
 })
-
+/**
+* @swagger
+* /addmatches:
+*  post:
+*   tags:
+*    - Addmatches
+*   name: AddMatches
+*   produces: application/json
+*   parameters: 
+*   - name: addmatches
+*     in: body
+*     schema:
+*       type: object
+*       properties: 
+*        firstteam:
+*         type: string
+*        secondteam:
+*         type: string
+*        sportstype:
+*         type: date
+*        date:
+*         type: date 
+*        time:
+*         type: string 
+*   responses:
+*     201:
+*       description: sucessfull  
+*/
 
 myapp.post('/addmatches',matches.addMatches,function(req,res,next){
 res.status(201);
@@ -176,7 +291,34 @@ console.log(req.params.uid);
 
 myapp.get('/matches/:uid',matches.getmatches,function(req,res,next){
 
-
+/**
+* @swagger
+* /updatematches/:uid:
+*  put:
+*   tags:
+*    - updatematches
+*   name: UpdateMatches
+*   produces: application/json
+*   parameters: 
+*   - name: updatematches
+*     in: body
+*     schema:
+*       type: object
+*       properties: 
+*        firstteam:
+*         type: string
+*        secondteam:
+*         type: string
+*        sportstype:
+*         type: date
+*        date:
+*         type: date 
+*        time:
+*         type: string 
+*   responses:
+*     201:
+*       description: sucessfull  
+*/
 
 });
 myapp.put('/updatematches/:uid',matches.updatematches,function(req,res){
