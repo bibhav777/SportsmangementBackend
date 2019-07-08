@@ -199,3 +199,4 @@ res.send({"message":err.message});
 })
 
 myapp.listen(3001);
+module.exports=myapp;
