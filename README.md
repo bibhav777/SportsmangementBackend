@@ -1,15 +1,20 @@
 # Your Project Title Here
 Name: Beebhav Sapkota
 
-CollegeID: Your College ID
+CollegeID: 170010
 
-Batch: Jan19A/B/C/D?
+Batch: C
 
 Brief description of the domain of your project!
 
 ## List of Main Features
-List out 3/4 main technical features of your project
+1.LOGIN
+2.Register
+3.Add,Update,Delete,Retrieve Players
+4.Add,Update,Delete,Retrieve Matches
+5.View matches schedules in frontend.
 
 ## API Documentation
-List out your main APIs and its sample input and output!
+
+
 
